@@ -1,0 +1,56 @@
+name: Publish public Lite Registry metadata
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  publish-lite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      id-token: write
+    steps:
+      - name: Install verified official publisher
+        shell: bash
+        run: |
+          curl --fail --location --connect-timeout 15 --max-time 60 --retry 2 --output publisher.tar.gz https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz
+          echo 'a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc  publisher.tar.gz' | sha256sum --check --strict
+          tar -xzf publisher.tar.gz mcp-publisher
+      - name: Publish only the three separate public Lite releases
+        shell: python
+        run: |
+          import json, pathlib, subprocess, urllib.parse, urllib.request
+          definitions = json.loads('[{"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json", "name": "io.github.gmcfuerte/gmcbuilder-mcp-lite", "title": "GMC Builder MCP Lite", "description": "Limited local read-only MCP companion: GMC Builder MCP Lite.", "version": "0.1.1", "repository": {"url": "https://github.com/gmcfuerte/gmcbuilder-mcp-lite", "source": "github"}, "packages": [{"registryType": "mcpb", "identifier": "https://github.com/gmcfuerte/gmcbuilder-mcp-lite/releases/download/v0.1.1/gmcbuilder-mcp-lite-0.1.1.mcpb", "fileSha256": "1080dfd58dafeaea1489424327f642bb3a2bb213a8c808bf583cd4bab371df26", "transport": {"type": "stdio"}}]}, {"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json", "name": "io.github.gmcfuerte/elementor-mcp-lite", "title": "Elementor MCP Lite", "description": "Limited local read-only MCP companion: Elementor MCP Lite.", "version": "0.1.1", "repository": {"url": "https://github.com/gmcfuerte/elementor-mcp-lite", "source": "github"}, "packages": [{"registryType": "mcpb", "identifier": "https://github.com/gmcfuerte/elementor-mcp-lite/releases/download/v0.1.1/elementor-mcp-lite-0.1.1.mcpb", "fileSha256": "a600f240a27f04eacd67f2735f6745d2a177e8d05042c2586b1afe78fcd64101", "transport": {"type": "stdio"}}]}, {"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json", "name": "io.github.gmcfuerte/yootheme-mcp-lite", "title": "GMC YOOtheme MCP Lite", "description": "Limited local read-only MCP companion: GMC YOOtheme MCP Lite.", "version": "0.1.1", "repository": {"url": "https://github.com/gmcfuerte/yootheme-mcp-lite", "source": "github"}, "packages": [{"registryType": "mcpb", "identifier": "https://github.com/gmcfuerte/yootheme-mcp-lite/releases/download/v0.1.1/yootheme-mcp-lite-0.1.1.mcpb", "fileSha256": "6d7e5dff6a1ec581b13bcfc7f6f9f23395828ebad258e47cb660933444bad62c", "transport": {"type": "stdio"}}]}]')
+          registry = 'https://registry.modelcontextprotocol.io'
+          receipts = []
+          try:
+              login = subprocess.run(['./mcp-publisher', 'login', 'github-oidc', '--registry', registry], capture_output=True, timeout=60)
+              if login.returncode:
+                  raise RuntimeError('OIDC login failed')
+              for index, server in enumerate(definitions):
+                  item = {'name': server['name'], 'version': server['version'], 'confirmed': False}
+                  receipts.append(item)
+                  path = pathlib.Path('server-' + str(index) + '.json')
+                  path.write_text(json.dumps(server), encoding='utf-8')
+                  validation = subprocess.run(['./mcp-publisher', 'validate', '--file', str(path)], capture_output=True, timeout=60)
+                  item['validation_success'] = validation.returncode == 0
+                  if validation.returncode:
+                      raise RuntimeError('Registry metadata validation failed')
+                  publication = subprocess.run(['./mcp-publisher', 'publish', str(path)], capture_output=True, timeout=60)
+                  item['publication_success'] = publication.returncode == 0
+                  if publication.returncode:
+                      raise RuntimeError('Registry publication failed')
+                  url = registry + '/v0.1/servers/' + urllib.parse.quote(server['name'], safe='') + '/versions/' + server['version']
+                  with urllib.request.urlopen(url, timeout=30) as response:
+                      data = json.load(response)
+                  actual = data.get('server', data)
+                  item['status'] = data.get('_meta', {}).get('io.modelcontextprotocol.registry/official', {}).get('status')
+                  item['hash_matches'] = actual.get('packages', [{}])[0].get('fileSha256') == server['packages'][0]['fileSha256']
+                  item['confirmed'] = item['status'] == 'active' and item['hash_matches'] and actual.get('name') == server['name']
+                  if not item['confirmed']:
+                      raise RuntimeError('Registry readback differs')
+          finally:
+              subprocess.run(['./mcp-publisher', 'logout'], capture_output=True, timeout=15)
+              print('LITE_REGISTRY_RECEIPTS=' + json.dumps(receipts))
