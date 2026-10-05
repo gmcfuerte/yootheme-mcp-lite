@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "yootheme-mcp-lite": {
+      "command": "<absolute-path-to-venv-python>",
+      "args": [
+        "-m",
+        "yootheme_mcp_lite"
+      ],
+      "env": {
+        "YOOTHEME_MCP_LITE_SITES": "<absolute-path-to-local-sites.json>"
+      }
+    }
+  }
+}

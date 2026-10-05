@@ -1,0 +1,16 @@
+{
+  "sites": {
+    "wordpress-demo": {
+      "platform": "wordpress",
+      "url": "https://example.com",
+      "username_env": "DEMO_WP_USERNAME",
+      "password_env": "DEMO_WP_APP_PASSWORD",
+      "rest_mode": "pretty"
+    },
+    "joomla-demo": {
+      "platform": "joomla",
+      "url": "https://joomla.example.com",
+      "joomla_token_env": "DEMO_JOOMLA_TOKEN"
+    }
+  }
+}
