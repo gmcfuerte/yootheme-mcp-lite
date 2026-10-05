@@ -107,7 +107,7 @@ async def _get(name: str, route: str, params: dict | None = None):
         allowed = ({"content/articles"} if PRODUCT == "yootheme" else {"list_elements"})
     if route not in allowed:
         raise LiteError("Endpoint is outside the Lite read allowlist.")
-    headers = {"Accept": "application/json", "User-Agent": PRODUCT + "-mcp-lite/0.1.0"}
+    headers = {"Accept": "application/json", "User-Agent": PRODUCT + "-mcp-lite/0.1.1"}
     auth = None
     query = dict(params or {})
     if platform == "wordpress":

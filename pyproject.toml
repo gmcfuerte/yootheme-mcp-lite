@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "yootheme-mcp-lite"
-version = "0.1.0"
+version = "0.1.1"
 description = "Limited read-only MCP client for YOOtheme"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "LicenseRef-GMC-Lite-Commercial"
 license-files = ["LICENSE"]
 authors = [{name = "GMC", email = "gmcfuerte@gmail.com"}]
-dependencies = ["mcp>=1.2.0,<2", "httpx>=0.27.0,<1"]
+dependencies = ["mcp>=1.27.2,<2", "httpx>=0.27.0,<1"]
 
 [project.scripts]
 yootheme-mcp-lite = "yootheme_mcp_lite.__main__:main"
