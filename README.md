@@ -1,6 +1,6 @@
 # YOOtheme MCP Lite
 
-Free limited companion to the GMC Pro product. This is a separate **0.1.1**
+Free limited companion to the GMC Pro product. This is a separate **0.1.2**
 client with a fresh history and only four read-only MCP tools. The Pro
 implementation is absent from this repository.
 
@@ -20,6 +20,20 @@ YOOtheme MCP Base costs **EUR 49/year** for three sites (12 months, manual renew
 
 Lite is free to use under the [limited commercial licence](LICENSE).
 Source visibility does not grant redistribution or resale rights.
+
+## Upgrade to Pro in your MCP client
+
+Open the resource **Upgrade to Pro** (`gmc://lite/pro-features`) to see the
+capability comparison and the product's current plans. Editing, publishing,
+full import/export, bulk editing and restoration are labelled **unavailable
+in Lite**. They are informational previews; no Pro code or executable Pro
+tools are bundled. The free tools keep working without an upgrade.
+
+MCP clients decide how resources are displayed, so this is not a guaranteed
+popup or a graphical settings panel. Ask your assistant to read the resource
+if its client does not expose a resource browser.
+
+[Read the practical Lite guide](https://fuerteventuratv.net/en/joomla-app/1887-gmc-mcp-lite-practical-guide).
 
 ## Prerequisites
 
