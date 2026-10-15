@@ -33,7 +33,11 @@ MCP clients decide how resources are displayed, so this is not a guaranteed
 popup or a graphical settings panel. Ask your assistant to read the resource
 if its client does not expose a resource browser.
 
-[Read the practical Lite guide](https://fuerteventuratv.net/en/joomla-app/1887-gmc-mcp-lite-practical-guide).
+## Guide and presentation
+
+- [Practical Lite guide (English)](https://fuerteventuratv.net/en/joomla-app/1887-gmc-mcp-lite-practical-guide): prerequisites, setup and a first read-only session.
+- [Presentation for clients (Italian PDF)](https://fuerteventuratv.net/images/manuali-cms/GMC-MCP-presentazione-clienti-IT-20261012.pdf): a short overview of the three Lite clients and the separate Pro editions.
+- [Pro features and annual plans](https://fuerteventuratv.net/en/cms/yootheme-mcp).
 
 ## Prerequisites
 
