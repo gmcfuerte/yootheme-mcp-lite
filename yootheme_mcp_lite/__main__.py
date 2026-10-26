@@ -46,19 +46,19 @@ def summarize_layout(layout_json: str) -> dict:
 def pro_features() -> str:
     """Show Lite/Pro differences; contains no executable Pro functionality."""
     return (
-        '# Upgrade to Pro — YOOtheme MCP\\n\\n'
-        'Lite remains free to use and has four read-only tools.\\n\\n'
-        '| Capability | Lite | Separate Pro product |\\n'
-        '| --- | --- | --- |\\n'
-        '| List site aliases and probe a configured site | Available | Available |\\n'
-        '| Limited listing and local JSON node counts | Available | Broader inspection |\\n'
-        '| Create, edit or publish layouts/documents | Unavailable | Pro capability |\\n'
-        '| Full export/import and bulk editing | Unavailable | Pro capability |\\n'
-        '| Backups or revision restoration | Unavailable | Pro capability |\\n\\n'
+        '# Upgrade to Pro — YOOtheme MCP\n\n'
+        'Lite remains free to use and has four read-only tools.\n\n'
+        '| Capability | Lite | Separate Pro product |\n'
+        '| --- | --- | --- |\n'
+        '| List site aliases and probe a configured site | Available | Available |\n'
+        '| Limited listing and local JSON node counts | Available | Broader inspection |\n'
+        '| Create, edit or publish layouts/documents | Unavailable | Pro capability |\n'
+        '| Full export/import and bulk editing | Unavailable | Pro capability |\n'
+        '| Backups or revision restoration | Unavailable | Pro capability |\n\n'
         'These unavailable capabilities are an informational preview, not callable '
-        'tools or code locked behind a licence key. Pro is obtained separately.\\n\\n'
-        '[Explore Pro and current plans](https://fuerteventuratv.net/en/cms/yootheme-mcp)\\n\\n'
-        '[Practical Lite guide](https://fuerteventuratv.net/en/joomla-app/1887-gmc-mcp-lite-practical-guide)\\n'
+        'tools or code locked behind a licence key. Pro is obtained separately.\n\n'
+        '[Explore Pro and current plans](https://fuerteventuratv.net/en/cms/yootheme-mcp)\n\n'
+        '[Practical Lite guide](https://fuerteventuratv.net/en/joomla-app/1887-gmc-mcp-lite-practical-guide)\n'
     )
 
 
