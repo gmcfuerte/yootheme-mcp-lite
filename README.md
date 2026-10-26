@@ -1,6 +1,6 @@
 # YOOtheme MCP Lite
 
-Free limited companion to the GMC Pro product. This is a separate **0.1.2**
+Free limited companion to the GMC Pro product. This is a separate **0.1.3**
 client with a fresh history and only four read-only MCP tools. The Pro
 implementation is absent from this repository.
 
@@ -105,9 +105,15 @@ HTTP 403/415 stops subsequent requests to that base URL until restart.
 
 ## Release status
 
-Initial Lite release: source and package contents inspected and Python
-compiled. Site integration and runtime tests have not been performed.
-Do not treat this initial release as a production integration certification.
+Version 0.1.3 fixes Joomla Web Services content negotiation: Joomla requests
+use `Accept: application/vnd.api+json`, while WordPress keeps `application/json`.
+Four HTTP regression tests cover both platforms, the endpoint allowlist and
+the HTTP 403/415 fail-stop. On 26 October 2026, a clean Python 3.13 installation
+with MCP SDK 1.30.0 passed stdio startup, all four tools and read-only calls
+against disposable WordPress 7.1.3 and Joomla 6.1.4 sites with YOOtheme Pro
+5.0.53. Package installation and upgrade from 0.1.2 were also checked.
+These are scoped Windows laboratory results, not production, graphical-host
+or cross-platform certification. YOOtheme remains separately licensed.
 
 ## Contact
 
