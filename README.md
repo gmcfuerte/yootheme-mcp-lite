@@ -6,6 +6,9 @@ implementation is absent from this repository.
 
 [![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/gmcfuerte/yootheme-mcp-lite)
 
+[![Listed on AllMCPs](https://allmcps.com/api/badge/gmc-yootheme-mcp-lite)](https://allmcps.com/mcp/gmc-yootheme-mcp-lite?verify=8e394cba-4695-474c-8797-17f853d501bc)
+
+
 ## Lite and Pro
 
 | Capability | Lite | Pro product |
