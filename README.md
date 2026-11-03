@@ -105,16 +105,11 @@ HTTP 403/415 stops subsequent requests to that base URL until restart.
 
 ## Release status
 
-Version 0.1.3 fixes Joomla Web Services content negotiation: Joomla requests
-use `Accept: application/vnd.api+json`, while WordPress keeps `application/json`.
-Four HTTP regression tests cover both platforms, the endpoint allowlist and
-the HTTP 403/415 fail-stop. On 26 October 2026, a clean Python 3.13 installation
-with MCP SDK 1.30.0 passed stdio startup, all four tools and read-only calls
-against disposable WordPress 7.1.3 and Joomla 6.1.4 sites with YOOtheme Pro
-5.0.53. Package installation and upgrade from 0.1.2 were also checked.
-These are scoped Windows laboratory results, not production, graphical-host
-or cross-platform certification. YOOtheme remains separately licensed.
+Version **0.1.4** fixes line breaks in the capability-comparison resource. The four read-only tools remain; no Pro editing code is included. The release checks recorded for 0.1.4 include current CMS read probes and exact MCPB `uv` startup on Windows/Python 3.13.
 
+Version **0.1.3** corrected Joomla Web Services content negotiation: Joomla requests use `Accept: application/vnd.api+json`, while WordPress keeps `application/json`. Four HTTP regression tests cover both platforms, the endpoint allowlist and the HTTP 403/415 fail-stop. On 26 October 2026, a clean Python 3.13 installation with MCP SDK 1.30.0 passed stdio startup, all four tools and read-only calls against disposable WordPress 7.1.3 and Joomla 6.1.4 sites with YOOtheme Pro 5.0.53. Package installation and upgrade from 0.1.2 were also checked.
+
+These are scoped Windows laboratory results. They do not certify graphical-host installation, macOS/Linux or every upstream vendor feature. YOOtheme remains separately licensed.
 ## Contact
 
 [GMC](https://fuerteventuratv.net/en/cms) · gmcfuerte@gmail.com.
