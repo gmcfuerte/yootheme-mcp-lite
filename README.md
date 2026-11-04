@@ -110,6 +110,12 @@ Version **0.1.4** fixes line breaks in the capability-comparison resource. The f
 Version **0.1.3** corrected Joomla Web Services content negotiation: Joomla requests use `Accept: application/vnd.api+json`, while WordPress keeps `application/json`. Four HTTP regression tests cover both platforms, the endpoint allowlist and the HTTP 403/415 fail-stop. On 26 October 2026, a clean Python 3.13 installation with MCP SDK 1.30.0 passed stdio startup, all four tools and read-only calls against disposable WordPress 7.1.3 and Joomla 6.1.4 sites with YOOtheme Pro 5.0.53. Package installation and upgrade from 0.1.2 were also checked.
 
 These are scoped Windows laboratory results. They do not certify graphical-host installation, macOS/Linux or every upstream vendor feature. YOOtheme remains separately licensed.
+
+On 4 November 2026, Lite 0.1.4 passed all four read-only tools against
+disposable Joomla 6.1.4 and WordPress 7.1.4 instances, both running YOOtheme
+Pro 5.0.53. These results cover local Windows testing only; they do not certify
+production hosting, other platforms, or every YOOtheme feature.
+
 ## Contact
 
 [GMC](https://fuerteventuratv.net/en/cms) · gmcfuerte@gmail.com.
